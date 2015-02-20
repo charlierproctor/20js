@@ -131,7 +131,7 @@ JSON.parse(b).data
 
 In this block of code, I start by parsing the JSON response from the API request. Then I `filter` to include only requests with at least one food service violation. While doing that, I also filter by zipcode, if appropriate. 
 
-Next I `map` over this new array to convert each element into a string. Each string contains the "frontend" code to create the marker and the info window. The code generated looks something like:
+Next I `map` over this new array to convert each element into a string. Each string contains the "frontend" code to create the marker and the info window. The code generated (for each data point on the map) looks something like:
 
 ```js
 var m110 = new google.maps.Marker({position: new google.maps.LatLng(43.094001,-76.14727),map: map, icon:"http://findicons.com/icon/download/26276/cancel2/16/png"});
