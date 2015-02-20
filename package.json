@@ -5,6 +5,7 @@
   "description": "Submission to ChallengePost's 20 Lines of Javascript Contest",
   "main": "20js.js",
   "dependencies": {
+    "express": "^4.11.2",
     "request": "^2.53.0"
   }
 }
