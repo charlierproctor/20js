@@ -4,5 +4,7 @@
   "version": "0.0.1",
   "description": "Submission to ChallengePost's 20 Lines of Javascript Contest",
   "main": "20js.js",
-  "dependencies": {}
+  "dependencies": {
+    "request": "^2.53.0"
+  }
 }
