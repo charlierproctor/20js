@@ -1,6 +1,6 @@
 # NY State Food Service Inspection Failures
 
-This project is a submission to [ChallengePost's 20js contest](http://20js.challengepost.com/).
+This project is a submission to [ChallengePost's 20js contest](http://20js.challengepost.com/). View the submission [here](http://20js.challengepost.com/submissions/33051-ny-state-food-service-inspection-failures).
 
 Using 20 lines of JavaScript, I've written an Express app that plots the location of all food service violations in the state of New York. 
 
