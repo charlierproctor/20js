@@ -123,13 +123,20 @@ JSON.parse(b).data
 			return (req.params.z?(x[20].trim()===req.params.z):1)&&(x[12]!=="0")}
 		else { return false }
 	})
-	.map(function(x){return "\nvar m"+(++r)+ " = new google.maps.Marker({position: new google.maps.LatLng(" + x[34][1] + "," +x[34][2]+"),map: map, icon:\"http://findicons.com/icon/download/26276/cancel2/16/png\"});\nvar i"+r+"=new google.maps.InfoWindow({content: \"<h1>"+x[8].trim().replace(/"/g,'\\\"')+"</h1>"+ x[11].replace(/"/g, '\\\"') +"\"});\ngoogle.maps.event.addListener(m"+r+",'click',function(){i"+r+".open(map,m"+r+");});"
-})
+	.map(function(x){
+	return "\nvar m"+(++r)+ " = new google.maps.Marker({position: new google.maps.LatLng(" + x[34][1] + "," +x[34][2]+"),map: map, icon:\"http://findicons.com/icon/download/26276/cancel2/16/png\"});\nvar i"+r+"=new google.maps.InfoWindow({content: \"<h1>"+x[8].trim().replace(/"/g,'\\\"')+"</h1>"+ x[11].replace(/"/g, '\\\"') +"\"});\ngoogle.maps.event.addListener(m"+r+",'click',function(){i"+r+".open(map,m"+r+");});"
+	})
 	.join("\n")
 ```
 
 In this block of code, I start by parsing the JSON response from the API request. Then I `filter` to include only requests with at least one food service violation. While doing that, I also filter by zipcode, if appropriate. 
 
-Next I `map` over this new array to convert each element into a string. Each string contains the "frontend" code to create the marker and the info window.
+Next I `map` over this new array to convert each element into a string. Each string contains the "frontend" code to create the marker and the info window. The code generated looks something like:
+
+```js
+var m110 = new google.maps.Marker({position: new google.maps.LatLng(43.094001,-76.14727),map: map, icon:"http://findicons.com/icon/download/26276/cancel2/16/png"});
+var i110=new google.maps.InfoWindow({content: "<h1>AMF Strike-N-Spare Lanes</h1>Item  2C-  Critical Violation [RED] Cooked or prepared foods are subject to cross-contamination from raw foods.; Item  4A-  Critical Violation [RED] Toxic chemicals are improperly labeled, stored or used so that contamination of food can occur.; Item  8E-   Accurate thermometers not available or used to evaluate refrigerated or heated storage temperatures; "});
+google.maps.event.addListener(m110,'click',function(){i110.open(map,m110);});
+```
 
 Finally, I `join` all these strings together and send the response to the client.
